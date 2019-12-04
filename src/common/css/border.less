@@ -1,0 +1,75 @@
+.border-top(@color: #dcdcdc, @pseudo: before) {
+	position: relative;
+	@pseudo-selector: ~":@{pseudo}";
+
+	&@{pseudo-selector} {
+		content: " ";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 1px;
+		border-top: 1px solid @color;
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+		-webkit-transform: scaleY(0.5);
+		transform: scaleY(0.5);
+	}
+}
+
+.border-bottom(@color: #dcdcdc, @pseudo: after) {
+	position: relative;
+	@pseudo-selector: ~":@{pseudo}";
+
+	&@{pseudo-selector} {
+		content: " ";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 1px;
+		border-bottom: 1px solid @color;
+		-webkit-transform-origin: 0 100%;
+		transform-origin: 0 100%;
+		-webkit-transform: scaleY(0.5);
+		transform: scaleY(0.5);
+	}
+}
+
+.border-left(@color: #dcdcdc, @pseudo: before) {
+	position: relative;
+	@pseudo-selector: ~":@{pseudo}";
+
+	&@{pseudo-selector} {
+		content: " ";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 1px;
+		height: 100%;
+		border-left: 1px solid @color;
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+		-webkit-transform: scaleX(0.5);
+		transform: scaleX(0.5);
+	}
+}
+
+.border-right(@color: #dcdcdc, @pseudo: after) {
+	position: relative;
+	@pseudo-selector: ~":@{pseudo}";
+
+	&@{pseudo-selector} {
+		content: " ";
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 1px;
+		height: 100%;
+		border-right: 1px solid @color;
+		-webkit-transform-origin: 100% 0;
+		transform-origin: 100% 0;
+		-webkit-transform: scaleX(0.5);
+		transform: scaleX(0.5);
+	}
+}
