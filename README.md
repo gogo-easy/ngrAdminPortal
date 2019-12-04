@@ -1,6 +1,10 @@
 # NgRouter Admin Portal - NgRouter网关管理控制台
 
-## 项目安装依赖
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/gogo-easy/ngrAdminPortal/blob/master/LICENSE) [![Version](https://img.shields.io/github/v/release/gogo-easy/ngrAdminPortal)](https://github.com/gogo-easy/ngrAdminPortal/releases)
+
+## Quick Start
+
+### 项目安装依赖
 ```
 npm install
 ```
@@ -97,6 +101,10 @@ module.exports = {
 ### 部署建议
 
 -  NgrAdmin服务与NgrAdminPortal部署在同一应用实例上，NgrAdminPortal访问本地NgrAdmin服务。
+
+## License
+
+The project is licensed by [Apache 2.0](https://github.com/gogo-easy/ngrAdminPortal/blob/master/LICENSE)
 
 
 
