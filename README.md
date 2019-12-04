@@ -1,4 +1,4 @@
-# NgRouter Gateway management Portal （NgRouter网关管理控制台）
+# NgRouter Admin Portal - NgRouter网关管理控制台
 
 ## 项目安装依赖
 ```
