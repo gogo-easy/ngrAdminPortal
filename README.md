@@ -5,9 +5,13 @@
 ## Quick Start
 
 ### 项目安装依赖
+
+- 项目打包安装需要提前安装[nodejs](https://nodejs.org/zh-cn/)
+
 ```
 npm install
 ```
+
 
 ### 本地环境运行
 ```
@@ -100,7 +104,7 @@ module.exports = {
 
 ### 部署建议
 
--  NgrAdmin服务与NgrAdminPortal部署在同一应用实例上，NgrAdminPortal访问本地NgrAdmin服务。
+- NgrAdmin服务与NgrAdminPortal部署可同一应用实例上，NgrAdminPortal访问本地NgrAdmin服务。
 
 ## License
 
