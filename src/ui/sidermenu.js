@@ -33,7 +33,7 @@ class SideMenu extends Component {
 				urlpath: '/general/dashboard'
 			}, {
 				groupKey: 'router_manager',
-				groupTitle: 'API路由管理',
+				groupTitle: '路由管理',
 				menuList: [
 					{
 						key: 'gateway_manage',
@@ -47,7 +47,7 @@ class SideMenu extends Component {
 					},
 					{
 						key: 'route_group',
-						name: 'API路由组管理',
+						name: '路由规则管理',
 						urlpath: '/router_manager/route_group'
 					},
 					{
@@ -67,7 +67,7 @@ class SideMenu extends Component {
 						urlpath: '/plugin_manager/plugin_general'
 					}, {
 						subGroupKey: 'plugin_manager_property',
-						subTitle: '特征防刷器管理',
+						subTitle: '特征防刷器',
 						show: true,
 						subMenuList: [
 							{
@@ -82,7 +82,7 @@ class SideMenu extends Component {
 						]
 					}, {
 						subGroupKey: 'plugin_manager_firewall',
-						subTitle: '防火墙管理',
+						subTitle: '防火墙',
 						show: true,
 						subMenuList: [
 							{

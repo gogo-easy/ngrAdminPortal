@@ -38,7 +38,7 @@ class NormalLoginForm extends Component {
 
 	    return (
 	      	<Form onSubmit={this.handleSubmit} className="login-form">
-	      		<div className='login_title'>NgRouter API网关管理系统</div>
+	      		<div className='login_title'>NgRouter API网关管理控制台</div>
 		        <FormItem>
 		          	{getFieldDecorator('userName', {
 		            	rules: [{ required: true, message: '请输入用户名' }],
