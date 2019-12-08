@@ -189,7 +189,7 @@ class HostManage extends BaseView {
                     <a href="javascript:;">启禁用</a>
                 </Popconfirm>
                 <Divider type="vertical" />
-                <a href="javascript:;" onClick={this.goApiGroup.bind(this, record)}>查看API组</a>
+                <a href="javascript:;" onClick={this.goApiGroup.bind(this, record)}>查看路由规则</a>
             </span>
         )
 

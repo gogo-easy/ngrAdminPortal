@@ -46,7 +46,7 @@ class __SetLimitForm extends React.Component {
         </Row>
         <Row style={{ marginBottom: 10 }}>
           <Form.Item
-            label="http响应码："
+            label="异常响应码："
             hasFeedback
           >
             {getFieldDecorator('http_status', {
@@ -59,7 +59,7 @@ class __SetLimitForm extends React.Component {
 
         <Row style={{ marginBottom: 10 }}>
           <Form.Item
-            label="响应类型："
+            label="异常响应类型："
             hasFeedback
           >
             {getFieldDecorator('content_type', {
@@ -76,7 +76,7 @@ class __SetLimitForm extends React.Component {
         </Row>
         <Row style={{ marginBottom: 10 }}>
           <Form.Item
-            label="响应内容："
+            label="异常响应内容："
             hasFeedback
           >
             {getFieldDecorator('message', {
@@ -171,10 +171,10 @@ export class ModifyHostQPS extends React.Component {
     return (
       <span>
         <Button type="primary" size="small" onClick={this.show}>
-          限流设置
+          设置
         </Button>
         <Modal
-          title="主机限流管理"
+          title="主机设置"
           visible={this.state.visible}
           okText="确认"
           cancelText="取消"

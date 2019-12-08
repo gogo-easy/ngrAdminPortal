@@ -58,7 +58,7 @@ class __SetLimitForm extends React.Component {
         </Row>
         <Row style={{ marginBottom: 20 }}>
           <Form.Item
-            label="http响应码："
+            label="异常响应码："
             hasFeedback
           >
             {getFieldDecorator('http_status', {
@@ -75,7 +75,7 @@ class __SetLimitForm extends React.Component {
 
         <Row style={{ marginBottom: 20 }}>
           <Form.Item
-            label="响应类型："
+            label="异常响应类型："
             hasFeedback
           >
             {getFieldDecorator('content_type', {
@@ -92,7 +92,7 @@ class __SetLimitForm extends React.Component {
         </Row>
         <Row style={{ marginBottom: 20 }}>
           <Form.Item
-            label="响应内容："
+            label="异常响应内容："
             hasFeedback
           >
             {getFieldDecorator('message', {
@@ -153,12 +153,12 @@ export class SetLimit extends React.Component {
     return (
       <div>
         <Button type="primary" onClick={this.show}>
-          限流设置
+          设置
         </Button>
         {
           this.state.visible ? <Modal
             maskClosable={false}
-            title="限流设置"
+            title="网关设置"
             visible={this.state.visible}
             onOk={this.submit}
             onCancel={this.hide}
