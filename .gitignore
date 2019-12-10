@@ -1,7 +1,5 @@
 node_modules/*
 package-lock.json
 .idea/
-dist/static/
-/dist/favicon.ico
-dist/favicon.ico
+dist/
 public/
