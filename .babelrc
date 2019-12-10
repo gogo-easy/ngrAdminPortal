@@ -5,6 +5,11 @@
   ],
   "plugins": [
     "@babel/plugin-proposal-function-bind",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    ["import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style": true // `style: true` 会加载 less 文件
+    }]
   ]
 }

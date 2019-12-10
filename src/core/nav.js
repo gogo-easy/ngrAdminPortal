@@ -67,7 +67,7 @@ const content = (
 export default class Nav extends Component {
   render() {
 
-    const navStyle = { position: "relative", height: 50, display: "flex", alignItems: "center", backgroundColor: "#fff" }
+    const navStyle = { position: "relative", height: 50, display: "flex", alignItems: "center"}
     const avatarStyle = { position: "absolute", right: 20 }
 
     return (

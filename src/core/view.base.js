@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Layout, Avatar } from 'antd'
 
-import 'antd/dist/antd.min.css'; 
+// import 'antd/dist/antd.min.css'; 
 import '../common/less/private.less';
 
 import { parseQuery } from '../util/util';

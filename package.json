@@ -15,6 +15,7 @@
     "@babel/plugin-proposal-function-bind": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@electerm/antd-dark-theme": "^0.0.4",
     "@ice-point/webpack-server-qrcode": "^1.0.0",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.4",
@@ -43,20 +44,21 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "@ant-design/dark-theme": "^1.0.3",
+    "antd": "^3.4.3",
     "axios": "^0.18.0",
     "body-parser": "~1.17.1",
+    "classnames": "^2.2.6",
     "cookie-parser": "~1.4.3",
     "ejs": "~2.5.6",
-    "antd": "^3.4.3",
-    "classnames": "^2.2.6",
     "express": "^4.16.4",
     "history": "^4.2.0",
     "jquery": "^3.3.1",
     "moment": "^2.24.0",
     "pm2": "^3.5.1",
-    "react-json-editor-ajrm": "^2.5.9",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-json-editor-ajrm": "^2.5.9",
     "react-router-dom": "^4.3.1"
   }
 }
