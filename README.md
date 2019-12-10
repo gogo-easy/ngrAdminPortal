@@ -106,6 +106,18 @@ module.exports = {
 
 - NgrAdmin服务与NgrAdminPortal部署可同一应用实例上，NgrAdminPortal访问本地NgrAdmin服务。
 
+## Release
+
+- [版本发布](https://github.com/gogo-easy/ngrAdminPortal/releases)
+
+## 贡献者
+
+- [@Fijian](https://github.com/jacobslei)
+- [@yearyeardiff](https://github.com/yearyeardiff)
+- [@wl4ever](https://github.com/wl4ever)
+- [@helicopter19](https://github.com/helicopter19)
+- [@xuwei-fe](https://github.com/xuwei-fe)
+
 ## License
 
 The project is licensed by [Apache 2.0](https://github.com/gogo-easy/ngrAdminPortal/blob/master/LICENSE)
