@@ -58,6 +58,7 @@ class BaseView extends Component {
                     <Content style={{ paddingLeft: 200, minWidth: 1180 }}>
                         <Nav></Nav>
                         {this.renderMain()}
+                        <div style={{float:"right",marginRight: '20px'}}>Copyright@2019 Go Go Easy Team</div>
                     </Content>
                 </Layout>
             </div>
