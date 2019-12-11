@@ -70,7 +70,7 @@ class RouteGroup extends BaseView {
             group:[        //新增和编辑
                 {
                     key:'group_name',
-                    label:'API组名称',
+                    label:'路由规则组名称',
                     type:'input',
                     placeholder:'最长支持31位',
                     maxlength:31,
@@ -78,7 +78,7 @@ class RouteGroup extends BaseView {
                 },
                 {
                     key:'group_context',
-                    label:'API组上下文',
+                    label:'路由规则上下文PATH',
                     type:'input',
                     placeholder:'最长支持250位',
                     maxlength:250,
@@ -86,8 +86,8 @@ class RouteGroup extends BaseView {
                     disabled: false
                 },
                 {
-                    key:'include_context',
-                    label:'upstream是否包含上下文',
+                    key:'enable_rewrite',
+                    label:'是否重写上下文',
                     type:'select',
                     options:[
                         {
@@ -96,10 +96,10 @@ class RouteGroup extends BaseView {
                         },
                         {
                             value:'0',
-                            desc:'不包含'
+                            desc:'不重写'
                         },{
                             value:'1',
-                            desc:'包含'
+                            desc:'重写'
                         }
                     ],
                     disabled: false
@@ -400,20 +400,20 @@ class RouteGroup extends BaseView {
                     width:'10px',
                     align:'center'
                 }, {
-                    title: 'API组名称',
+                    title: '路由规则组名称',
                     dataIndex: 'group_name',
                     width:'100px',
                     align:'center'
                 },
                 {
-                    title: 'API组上下文',
+                    title: '上下文PATH',
                     dataIndex: 'group_context',
                     width:'100px',
                     align:'center'
                 },
                 {
-                    title: 'upstream是否包含上下文',
-                    dataIndex: 'include_context_txt',
+                    title: '是否重写',
+                    dataIndex: 'enable_rewrite_txt',
                     width:'100px',
                     align:'center'
                 },
@@ -484,16 +484,16 @@ class RouteGroup extends BaseView {
             searchFieldsArr:[    //搜索
                 {
                     key:'group_name',
-                    label:'API组名称',
+                    label:'路由规则组名称',
                     type:'input',
-                    placeholder:'请输入API组名称'
+                    placeholder:'请输入路由规则组名称'
 
                 },
                 {
                     key:'group_context',
-                    label:'API组上下文',
+                    label:'路由上下文PATH',
                     type:'input',
-                    placeholder:'请输入API组上下文'
+                    placeholder:'路由上下文PATH'
 
                 },
                 {
@@ -1865,7 +1865,7 @@ class RouteGroup extends BaseView {
                     temp = item;
 
                     if(temp.key === 'group_context'){
-                        temp.help = '您填写的API组上下文已存在';
+                        temp.help = '您填写的API路由规则上下文已存在';
                         temp.validateStatus = 'error';
                     }
 
@@ -1972,7 +1972,7 @@ class RouteGroup extends BaseView {
                     temp = item;
 
                     if(temp.key + '已存在' == 'group_context已存在'){
-                        temp.help = '您填写的API组上下文已存在';
+                        temp.help = '您填写的API路由规则上下文已存在';
                         temp.validateStatus = 'error';
                     }
 
@@ -2223,7 +2223,7 @@ class RouteGroup extends BaseView {
                 {this.renderSearchBar()}
                 <Content>
                     <div className='btn_box'>
-                        <Button className="editable-add-btn" onClick={this.showModal.bind(this,'group_add')} icon='plus' type='primary' className='right_btn'>新增路由</Button>
+                        <Button className="editable-add-btn" onClick={this.showModal.bind(this,'group_add')} icon='plus' type='primary' className='right_btn'>新增路由规则</Button>
                     </div>
                     <Table
                         columns={this.indata.tableColumns}
