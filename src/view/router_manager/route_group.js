@@ -1180,7 +1180,7 @@ class RouteGroup extends BaseView {
             self.indata.selectData["gateway"]=gatewayOptions;
             let searchFieldsArr = self.indata.searchFieldsArr
             const lb_algoIndex = searchFieldsArr.findIndex(item => item.key === 'gateway_id')
-            searchFieldsArr[lb_algoIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions);
+            searchFieldsArr[lb_algoIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions)
             
             //load host info
             hostListModel.setParam({},true);
