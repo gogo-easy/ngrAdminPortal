@@ -1178,7 +1178,6 @@ class RouteGroup extends BaseView {
         gatewayListModel.excute((res)=>{
             let gatewayOptions = self.formatGatewayList(res.data);
             self.indata.selectData["gateway"]=gatewayOptions;
-            debugger
             let searchFieldsArr = self.indata.searchFieldsArr
             const lb_algoIndex = searchFieldsArr.findIndex(item => item.key === 'gateway_id')
             searchFieldsArr[lb_algoIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions);
