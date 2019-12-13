@@ -105,6 +105,14 @@ class RouteGroup extends BaseView {
                     disabled: false
                 },
                 {
+                    key:'rewrite_to',
+                    label:'上下文重写为',
+                    type:'',
+                    placeholder:'最长支持250位',
+                    maxlength:250,
+                    disabled: false
+                },
+                {
                     key:'gateway_id',
                     label:'所属服务网关',
                     type:'select',
@@ -622,7 +630,6 @@ class RouteGroup extends BaseView {
         this.fetchAllApiGroup();
         this.fetchListDataSource();
     }
-
     changeGroupContextStatus (e) {
         const { modalFieldsArr, modalData } = this.state,
             { group } = modalFieldsArr
@@ -1121,12 +1128,12 @@ class RouteGroup extends BaseView {
      */
     renderSelectHostInSearchBar(data,value){
         let hostOptions = this.formatHostList(data);
-
-        this.indata.searchFieldsArr[3].options = [{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
-
+        
+        const hostIndex = this.indata.searchFieldsArr.findIndex(item => item.key === 'host_id')
+        this.indata.searchFieldsArr[hostIndex].options = [{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
         //根据参数设置 所属主机的值
         let searchData = this.state.searchData;
-        const host_id = this.props.location.query.host_id;
+        const host_id = this.props.location.query?this.props.location.query.host_id:'';
         if (host_id) {
             searchData.host_id = parseInt(host_id);
         }
@@ -1146,22 +1153,18 @@ class RouteGroup extends BaseView {
         let self = this;
         let gatewayOptions = self.indata.selectData["gateway"];
         let hostOptions = self.indata.selectData["host"];
-
+        const hostIndex = this.indata.searchFieldsArr.findIndex(item => item.key === 'host_id')
         //网关数据源
-        this.indata.searchFieldsArr[3].options = [{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions);
-
-
-
+        this.indata.searchFieldsArr[hostIndex].options = [{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions);
         //根据参数设置 所属主机的值
         let searchData = this.state.searchData;
-        const host_id = this.props.location.query.host_id;
-        const gateway_id = this.props.location.query.gateway_id;
+        const host_id = this.props.location.query?this.props.location.query.host_id:'';
+        const gateway_id = this.props.location.query?this.props.location.query.gateway_id:'';
         if (gateway_id && host_id) {
             searchData.gateway_id=parseInt(gateway_id);
             this.searchInputChange('gateway_id',searchData.gateway_id)
             searchData.host_id = parseInt(host_id);
         }
-
         this.setState({
             searchFieldsArr:this.indata.searchFieldsArr,
             searchData:searchData
@@ -1175,9 +1178,11 @@ class RouteGroup extends BaseView {
         gatewayListModel.excute((res)=>{
             let gatewayOptions = self.formatGatewayList(res.data);
             self.indata.selectData["gateway"]=gatewayOptions;
-            let modalFieldsArr = this.state.modalFieldsArr;
-            modalFieldsArr.group[3].options=[{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions);
-
+            debugger
+            let searchFieldsArr = self.indata.searchFieldsArr
+            const lb_algoIndex = searchFieldsArr.findIndex(item => item.key === 'gateway_id')
+            searchFieldsArr[lb_algoIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions);
+            
             //load host info
             hostListModel.setParam({},true);
             hostListModel.excute((res)=>{
@@ -1208,8 +1213,6 @@ class RouteGroup extends BaseView {
         apiGroupRateListModel.excute((res)=>{
 
             const listData = self.formatListData(res.data);
-
-
             self.setState({
                 listData:listData
             })
@@ -1353,7 +1356,6 @@ class RouteGroup extends BaseView {
 
 
     formatListData(listData){
-
         return listData.map((item,idx)=>{
 
             let all_targets = item.group_target || [];
@@ -1389,6 +1391,8 @@ class RouteGroup extends BaseView {
                 need_auth_txt:item.need_auth == '0'? '不需要':'需要',
                 enable:item.enable == 1 ?'1':'0',
                 enable_txt:item.enable == '0'? '禁用':'启用',
+                enable_rewrite:item.enable_rewrite == 1 ?'1':'0',
+                rewrite_to:item.rewrite_to,
                 lb_algo: item.lb_algo || '',
                 http_status:item.http_status || '',
                 content_type: item.content_type || '',
@@ -1437,13 +1441,11 @@ class RouteGroup extends BaseView {
         const target = e.target,
             value = target ? target.value : e,
             { modalFieldsArr, modalData } = this.state
-
         if (typeof value === 'string') {
             modalData[key] = value.trim();
         } else {
             modalData[key] = value
         }
-
         if (key === 'enable_balancing') {
             const lb_algoIndex = modalFieldsArr.group.findIndex(item => item.key === 'lb_algo'),
                 protocolIndex = modalFieldsArr.group.findIndex(item => item.key === 'upstream_domain_protocol'),
@@ -1459,9 +1461,11 @@ class RouteGroup extends BaseView {
             }
         }
         if(key === 'gateway_id'){
+            
             let hostOptions = this.formatHostList(this.indata.selectData.host,value);
             let modalFieldsArr = this.state.modalFieldsArr;
-            modalFieldsArr.group[4].options=[{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
+            const lb_algoIndex = modalFieldsArr.group.findIndex(item => item.key === 'host_id')
+            modalFieldsArr.group[lb_algoIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
             modalData['host_id']='';
         }
         if(key === 'host_id'){
@@ -1476,6 +1480,10 @@ class RouteGroup extends BaseView {
                     this.showNotification(noticeConfig);
                 }
             }
+        }
+        if(key === 'enable_rewrite'){
+            const lb_algoIndex = modalFieldsArr.group.findIndex(item => item.key === 'rewrite_to')
+            modalFieldsArr.group[lb_algoIndex].type = e==1?'input':''
         }
         this.setState({
             modalData,
@@ -1511,7 +1519,6 @@ class RouteGroup extends BaseView {
         let modalData = this.state.modalData;
         let editKey = '';
         let confirmParam ;
-
         if(flag == 'group_edit'){
 
             const itemData = record;
@@ -1533,6 +1540,8 @@ class RouteGroup extends BaseView {
                 group_context: itemData.group_context,
                 include_context:itemData.include_context,
                 enable: itemData.enable,
+                enable_rewrite:itemData.enable_rewrite,
+                rewrite_to:itemData.rewrite_to,
                 upstream_domain_name: itemData.upstream_domain_name,
                 upstream_domain_protocol: upstream_domain_protocol,
                 upstream_domain_host: upstream_domain_host,
@@ -1555,11 +1564,13 @@ class RouteGroup extends BaseView {
                 protocolIndex = modalFieldsArr.group.findIndex(item => item.key === 'upstream_domain_protocol'),    // 内网协议在定义的数组种的序列
                 hostIndex = modalFieldsArr.group.findIndex(item => item.key === 'upstream_domain_host'),            // 内网域名在定义的数组种的序列
                 groupContextIndex = modalFieldsArr.group.findIndex(item => item.key === 'group_context'),           // API组上下文在定义的数组种的序列
+                gatewayIndex = modalFieldsArr.group.findIndex(item => item.key === 'gateway_id'),
+                rewritetoIndex = modalFieldsArr.group.findIndex(item => item.key === 'rewrite_to'),
                 messageIndex = modalFieldsArr.group.findIndex(item => item.key === 'message');
 
             //根据gateway_id获取所属主机的数据源
             let hostOptions = this.formatHostList(this.indata.selectData.host,record.gateway_id);
-            modalFieldsArr.group[4].options=[{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
+            modalFieldsArr.group[gatewayIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
 
             modalFieldsArr.group[messageIndex].disabled = false
             if (itemData.enable_balancing === '1') {
@@ -1576,7 +1587,12 @@ class RouteGroup extends BaseView {
             } else {
                 modalFieldsArr.group[groupContextIndex].disabled = false
             }
-
+            if(itemData.enable_rewrite==='1'){
+                modalFieldsArr.group[rewritetoIndex].type = 'input'
+            }
+            else{
+                modalFieldsArr.group[rewritetoIndex].type = ''
+            }
             confirmParam = {
                 title:'编辑API组路由',
                 cancelText:'取消',
@@ -2169,7 +2185,6 @@ class RouteGroup extends BaseView {
         const InputChangeHandle = this.modalInputChange.bind(this);
 
         const fieldsValue = this.state.modalData;
-
         let fieldsArr = [];
 
         if(modalType == 'group_edit' || modalType == 'group_add'){
@@ -2217,6 +2232,7 @@ class RouteGroup extends BaseView {
                 return '总共：' + total + '条';
             }
         };
+        console.log(this.state.listData)
         return (
 
             <div style={{padding:'20px'}}>
