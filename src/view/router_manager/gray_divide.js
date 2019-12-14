@@ -93,7 +93,7 @@ class GrayDivide extends BaseView {
                 },
                 {
                     key:'group_id',
-                    label:'所属API组',
+                    label:'所属路由规则',
                     type:'select',
                     options:[
                         {
