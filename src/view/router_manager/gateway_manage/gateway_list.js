@@ -1,7 +1,8 @@
-import { Table } from 'antd';
+import {Button, Table} from 'antd';
 import React, { Component } from 'react';
 
 import { SetLimit } from "./edit_gateway";
+import { AddGateway } from "./add_gateway";
 
 const genCol = () => [
   {
@@ -61,8 +62,8 @@ export class GateWayList extends Component {
 
 
     return (
-      <div style={{ marginTop: 20 }}>
-
+      <div style={{ marginTop: 20, padding:'20px' }} >
+        <AddGateway />
         <Table
           columns={genCol()}
           className="log_list"

@@ -31,3 +31,19 @@ export class SetLimitModel extends BaseModel {
   }
 
 }
+
+/*
+	新增网关
+*/
+export class AddGatewayModel extends BaseModel {
+
+  constructor(props) {
+
+    super(props);
+
+    this.url = 'gateway/add';
+    this.method = 'POST';
+
+  }
+
+}

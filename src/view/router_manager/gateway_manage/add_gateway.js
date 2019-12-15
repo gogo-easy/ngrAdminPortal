@@ -21,7 +21,7 @@ const renderInput = (props) => (item, name, disabled = false) => {
   );
 }
 
-class __SetLimitForm extends React.Component {
+class __AddGatewayForm extends React.Component {
 
   checkMessge = (rule, value, callback) => {
     const form = this.props.form;
@@ -43,7 +43,7 @@ class __SetLimitForm extends React.Component {
         className="ant-advanced-search-form"
         style={{ width: "100%" }}
       >
-        {renderInput(props)("gateway_code", "网关编码：", true)}
+        {renderInput(props)("gateway_code", "网关编码：", false)}
         <Row style={{ marginBottom: 20 }}>
           <Form.Item
             label="网关名称："
@@ -80,10 +80,6 @@ class __SetLimitForm extends React.Component {
             )}
           </Form.Item>
         </Row>
-
-        <div style={{ visibility: "hidden", height: 0 }}>
-          {renderInput(props)("id", "id", true)}
-        </div>
 
         <Row style={{ marginBottom: 20 }}>
           <Form.Item
@@ -125,10 +121,10 @@ class __SetLimitForm extends React.Component {
   }
 }
 
-const SetLimitForm = Form.create({ name: 'gateway_set_limit_form' })(__SetLimitForm);
+const AddGatewayForm = Form.create({ name: 'gateway_add_form' })(__AddGatewayForm);
 
 // 限流设置弹框
-export class SetLimit extends React.Component {
+export class AddGateway extends React.Component {
 
   constructor(props) {
     super(props)
@@ -155,7 +151,7 @@ export class SetLimit extends React.Component {
     this.refs.info.validateFields((err, values) => {
       if (!err) {
 
-        eventBus.emit("modify", values, this.hide)
+        eventBus.emit("add", values, this.hide)
       }
     });
 
@@ -164,20 +160,20 @@ export class SetLimit extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.show}>
-          设置
-        </Button>
+        <div className='btn_box'>
+          <Button className="editable-add-btn" onClick={this.show} icon='plus' type='primary' className='right_btn'>新增网关</Button>
+        </div>
         {
           this.state.visible ? <Modal
             maskClosable={false}
-            title="设置网关"
+            title="新增网关"
             visible={this.state.visible}
             onOk={this.submit}
             onCancel={this.hide}
             okText="确认"
             cancelText="取消"
           >
-            <SetLimitForm  {...this.props.info} ref="info" />
+            <AddGatewayForm ref="info" />
           </Modal> : ""
         }
 
