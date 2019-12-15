@@ -65,7 +65,8 @@ class NormalLoginForm extends Component {
 		            	登录
 		          	</Button>
 		        </FormItem>
-	      	</Form>
+            <div style={{textAlign: "center",marginRight: '22px'}}>Copyright@2019 Go Go Easy Team</div>
+          </Form>
 	    );
   	}
 }

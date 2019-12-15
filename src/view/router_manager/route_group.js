@@ -1155,7 +1155,7 @@ class RouteGroup extends BaseView {
         let hostOptions = self.indata.selectData["host"];
         const hostIndex = this.indata.searchFieldsArr.findIndex(item => item.key === 'host_id')
         //网关数据源
-        this.indata.searchFieldsArr[hostIndex].options = [{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions);
+        this.indata.searchFieldsArr[hostIndex].options = [{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
         //根据参数设置 所属主机的值
         let searchData = this.state.searchData;
         const host_id = this.props.location.query?this.props.location.query.host_id:'';
@@ -1178,10 +1178,14 @@ class RouteGroup extends BaseView {
         gatewayListModel.excute((res)=>{
             let gatewayOptions = self.formatGatewayList(res.data);
             self.indata.selectData["gateway"]=gatewayOptions;
-            let searchFieldsArr = self.indata.searchFieldsArr
-            const lb_algoIndex = searchFieldsArr.findIndex(item => item.key === 'gateway_id')
-            searchFieldsArr[lb_algoIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions)
-            
+            let searchFieldsArr = self.indata.searchFieldsArr;
+            const gatewayIdIndex = searchFieldsArr.findIndex(item => item.key === 'gateway_id');
+            searchFieldsArr[gatewayIdIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions);
+
+            let modalFieldsArr = self.state.modalFieldsArr;
+            const gatewayIdModalIndex = modalFieldsArr.group.findIndex( item => item.key === 'gateway_id');
+            modalFieldsArr.group[gatewayIdModalIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(gatewayOptions);
+
             //load host info
             hostListModel.setParam({},true);
             hostListModel.excute((res)=>{
@@ -1462,9 +1466,9 @@ class RouteGroup extends BaseView {
         if(key === 'gateway_id'){
             
             let hostOptions = this.formatHostList(this.indata.selectData.host,value);
-            let modalFieldsArr = this.state.modalFieldsArr;
-            const lb_algoIndex = modalFieldsArr.group.findIndex(item => item.key === 'host_id')
-            modalFieldsArr.group[lb_algoIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
+            //let modalFieldsArr = this.state.modalFieldsArr;
+            const hostIdIndex = modalFieldsArr.group.findIndex( item => item.key === 'host_id')
+            modalFieldsArr.group[hostIdIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
             modalData['host_id']='';
         }
         if(key === 'host_id'){
@@ -1561,25 +1565,26 @@ class RouteGroup extends BaseView {
             let { modalFieldsArr } = this.state,
                 lb_algoIndex = modalFieldsArr.group.findIndex(item => item.key === 'lb_algo'),                      // 负载均衡算法在定义的数组种的序列
                 protocolIndex = modalFieldsArr.group.findIndex(item => item.key === 'upstream_domain_protocol'),    // 内网协议在定义的数组种的序列
-                hostIndex = modalFieldsArr.group.findIndex(item => item.key === 'upstream_domain_host'),            // 内网域名在定义的数组种的序列
+                upstreamDomainHostIndex = modalFieldsArr.group.findIndex(item => item.key === 'upstream_domain_host'),            // 内网域名在定义的数组种的序列
                 groupContextIndex = modalFieldsArr.group.findIndex(item => item.key === 'group_context'),           // API组上下文在定义的数组种的序列
                 gatewayIndex = modalFieldsArr.group.findIndex(item => item.key === 'gateway_id'),
+                hostIdIndex = modalFieldsArr.group.findIndex(item => item.key === 'host_id'),
                 rewritetoIndex = modalFieldsArr.group.findIndex(item => item.key === 'rewrite_to'),
                 messageIndex = modalFieldsArr.group.findIndex(item => item.key === 'message');
 
             //根据gateway_id获取所属主机的数据源
             let hostOptions = this.formatHostList(this.indata.selectData.host,record.gateway_id);
-            modalFieldsArr.group[gatewayIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
+            modalFieldsArr.group[hostIdIndex].options=[{"value":"defaultValue","desc":"请选择..."}].concat(hostOptions);
 
             modalFieldsArr.group[messageIndex].disabled = false
             if (itemData.enable_balancing === '1') {
                 modalFieldsArr.group[lb_algoIndex].disabled = false
                 modalFieldsArr.group[protocolIndex].disabled = true
-                modalFieldsArr.group[hostIndex].disabled = true
+                modalFieldsArr.group[upstreamDomainHostIndex].disabled = true
             } else if (itemData.enable_balancing === '0') {
                 modalFieldsArr.group[lb_algoIndex].disabled = true
                 modalFieldsArr.group[protocolIndex].disabled = false
-                modalFieldsArr.group[hostIndex].disabled = false
+                modalFieldsArr.group[upstreamDomainHostIndex].disabled = false
             }
             if (itemData.group_context === '-default-') {
                 modalFieldsArr.group[groupContextIndex].disabled = true
