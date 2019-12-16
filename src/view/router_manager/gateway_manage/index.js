@@ -4,13 +4,14 @@ import BaseView from '../../../core/view.base'
 import SearchBar from "./search_bar";
 import { GateWayList } from "./gateway_list";
 import { eventBus } from './events';
-import { GateWayListModel, SetLimitModel } from '../../../models/gateway_manage_models';
+import { AddGatewayModel, GateWayListModel, SetLimitModel } from '../../../models/gateway_manage_models';
 
 const trim = val => val && val.trim() ? val.trim() : undefined;
 import { notification } from 'antd';
 
 const gateWayListModelInstance = GateWayListModel.getInstance();
 const setLimitModelInstance = SetLimitModel.getInstance();
+const addGatewayModelInstance = AddGatewayModel.getInstance();
 
 class GateWay extends BaseView {
 
@@ -22,7 +23,7 @@ class GateWay extends BaseView {
 
     this.searchGateWayMessage = this.searchGateWayMessage.bind(this);
     this.modifyGateWay = this.modifyGateWay.bind(this);
-
+    this.addGateWay = this.addGateWay.bind(this);
 
   }
 
@@ -30,11 +31,13 @@ class GateWay extends BaseView {
     this.searchGateWayMessage();
     eventBus.on("search", this.searchGateWayMessage);
     eventBus.on("modify", this.modifyGateWay);
+    eventBus.on( "add", this.addGateWay)
   }
 
   componentWillUnmount() {
     eventBus.off("search");
     eventBus.off("modify");
+    eventBus.off("add")
   }
 
   // 搜索值  成功失败回调函数
@@ -56,11 +59,11 @@ class GateWay extends BaseView {
     });
   }
   modifyGateWay(values = {}, success) {
-    const { limit_count, id, content_type, message, http_status } = values;
+    const { gateway_desc, limit_count, id, content_type, message, http_status } = values;
     // console.log(limit_count, id, content_type, message, http_status);
 
     setLimitModelInstance.setParam({
-      limit_count, id, content_type, message, http_status
+      gateway_desc,limit_count, id, content_type, message, http_status
     }, true);
     setLimitModelInstance.excute(res => {
       notification.open({
@@ -80,6 +83,29 @@ class GateWay extends BaseView {
     });
   }
 
+  addGateWay(values = {}, success) {
+    const { gateway_code, gateway_desc, limit_count,  content_type, message, http_status } = values;
+    console.log(gateway_code,gateway_desc, limit_count, content_type, message, http_status);
+
+    addGatewayModelInstance.setParam({
+      gateway_code, gateway_desc,limit_count, content_type, message, http_status
+    }, true);
+    addGatewayModelInstance.excute(res => {
+      notification.open({
+        message: '新增成功',
+        description: '',
+        type: "success"
+      });
+      success && success();
+      this.searchGateWayMessage();
+    }, err => {
+      console.log(err);
+      notification.open({
+        message: '新增失败',
+        description: err["msg"]
+      });
+    });
+  }
 
   renderMain() {
     return (
