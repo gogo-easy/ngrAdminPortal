@@ -119,7 +119,8 @@ export class ModifyHostQPS extends React.Component {
     }, err => {
       notification.open({
         message: '查询失败',
-        description: err["msg"]
+        description: err["msg"],
+        type: "error"
       });
     })
   }
@@ -150,7 +151,8 @@ export class ModifyHostQPS extends React.Component {
           // console.log("res", res)
           notification.open({
             message: '修改成功',
-            description: res["msg"]
+            description: '',
+            type: "success"
           });
 
           setTimeout(() => {
@@ -160,7 +162,8 @@ export class ModifyHostQPS extends React.Component {
         }, err => {
           notification.open({
             message: '修改失败',
-            description: err["msg"]
+            description: err["msg"],
+            type: "error"
           });
         })
       }

@@ -228,7 +228,7 @@ class HostManage extends BaseView {
         function toggleFalid() {
             const noticeConfig = {
                 description: '状态变更成功',
-                type: 'faild'
+                type: "error"
             }
 
             self.showNotification(noticeConfig);
