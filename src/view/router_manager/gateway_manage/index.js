@@ -69,7 +69,8 @@ class GateWay extends BaseView {
     setLimitModelInstance.excute(res => {
       notification.open({
         message: '修改成功',
-        description: ''
+        description: '',
+        type: "success"
       });
       success && success();
       this.searchGateWayMessage();
@@ -77,7 +78,8 @@ class GateWay extends BaseView {
       console.log(err);
       notification.open({
         message: '修改失败',
-        description: err["msg"]
+        description: err["msg"],
+        type: "error"
       });
     });
   }
