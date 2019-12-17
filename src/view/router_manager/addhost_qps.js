@@ -28,19 +28,19 @@ class __AddLimitForm extends React.Component {
     hostListModel.setParam({
       id: e
     }, true)
-    hostListModel.excute(res => {
-      this.setState({
-        gatewayinfo: res.data[0],
-      },()=>{
-        this.props.cb(this.state.gatewayinfo)
-      })
+    // hostListModel.excute(res => {
+    //   this.setState({
+    //     gatewayinfo: res.data[0],
+    //   },()=>{
+    //     this.props.cb(this.state.gatewayinfo)
+    //   })
 
-    }, err => {
-      notification.open({
-        message: '查询失败',
-        description: err["msg"]
-      });
-    })
+    // }, err => {
+    //   notification.open({
+    //     message: '查询失败',
+    //     description: err["msg"]
+    //   });
+    // })
   }
 
   render() {
@@ -57,7 +57,11 @@ class __AddLimitForm extends React.Component {
             label="所属服务网关"
             hasFeedback
           >
+                                
             {getFieldDecorator('gateway_code', {
+              rules: [{
+                  required: true,message:"请选择所属服务网关"
+              }],
               initialValue: props["gateway_code"] ? props["gateway_code"] : undefined,
             })(
               <Select placeholder="请选择所属服务网关" style={{ width: 200 }} allowClear onChange={this.gatewayhandleChange.bind(this)}>
@@ -76,6 +80,9 @@ class __AddLimitForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('gateway_desc', {
+              rules: [{
+                  required: true,message:"请输入主机名字"
+              }],
               initialValue: props["gateway_desc"],
             })(
               <Input style={{ width: 200 }} />
@@ -88,6 +95,9 @@ class __AddLimitForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('host', {
+              rules: [{
+                required: true,message:"请输入主机域名"
+              }],
               initialValue: props["host"],
             })(
               <Input style={{ width: 200 }} />
@@ -100,6 +110,9 @@ class __AddLimitForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('limit_count', {
+              rules: [{
+                required: true,message:"QPS限流阈值(单机)"
+              }],
               initialValue: props["limit_count"],
             })(
               <InputNumber min={0} style={{ width: 200 }} />
@@ -112,6 +125,9 @@ class __AddLimitForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('http_status', {
+              rules: [{
+                required: true,message:"QPS限流阈值(单机)"
+              }],
               initialValue: props["http_status"],
             })(
               <InputNumber min={100} max={600} />
@@ -125,6 +141,9 @@ class __AddLimitForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('content_type', {
+              rules: [{
+                required: true,message:"请选择响应类型"
+              }],
               initialValue: props["content_type"] ? props["content_type"] : undefined,
             })(
               <Select placeholder="请选择响应类型" style={{ width: 200 }} allowClear onChange={this.handleChange}>
@@ -144,9 +163,8 @@ class __AddLimitForm extends React.Component {
             {getFieldDecorator('message', {
               initialValue: props["message"],
               rules: [{
-                validator: this.checkMessge,
+                required: true,message:"请输入响应类型"
               }],
-
             })(
               <TextArea rows={4} style={{ width: 300 }} />
             )}
