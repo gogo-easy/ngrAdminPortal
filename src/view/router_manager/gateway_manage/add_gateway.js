@@ -10,8 +10,11 @@ const renderInput = (props) => (item, name, disabled = false) => {
   const { getFieldDecorator } = props.form;
   return (
     <Row style={{ marginBottom: 20 }}>
-      <Form.Item label={name}>
+      <Form.Item label={name} hasFeedback >
         {getFieldDecorator(item, {
+          rules: [{
+            required: true,message:"网关编码为必填且要唯一"
+          }],
           initialValue: props[item],
         })(
           <Input disabled={disabled} />
@@ -46,10 +49,13 @@ class __AddGatewayForm extends React.Component {
         {renderInput(props)("gateway_code", "网关编码：", false)}
         <Row style={{ marginBottom: 20 }}>
           <Form.Item
-            label="网关名称："
+            label="网关描述："
             hasFeedback
           >
             {getFieldDecorator('gateway_desc', {
+              rules: [{
+                required: true,message:"请填写网关描述"
+              }],
               initialValue: props["gateway_desc"],
             })(
               <Input style={{ width: 200 }} />
@@ -62,6 +68,9 @@ class __AddGatewayForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('limit_count', {
+              rules: [{
+                required: true,message:"请设置QPS限流阈值(单机)"
+              }],
               initialValue: props["limit_count"],
             })(
               <InputNumber min={0} style={{ width: 200 }} />

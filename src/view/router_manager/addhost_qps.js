@@ -111,7 +111,7 @@ class __AddLimitForm extends React.Component {
           >
             {getFieldDecorator('limit_count', {
               rules: [{
-                required: true,message:"QPS限流阈值(单机)"
+                required: true,message:"请设置QPS限流阈值(单机)"
               }],
               initialValue: props["limit_count"],
             })(
@@ -195,7 +195,8 @@ export class ModifyAddHostQPS extends React.Component {
     }, err => {
       notification.open({
         message: '查询失败',
-        description: err["msg"]
+        description: err["msg"],
+        type: "error"
       });
     })
   }
