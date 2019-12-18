@@ -76,12 +76,12 @@ class __AddLimitForm extends React.Component {
         </Row>
         <Row style={{ marginBottom: 10 }}>
           <Form.Item
-            label="主机名字："
+            label="主机描述："
             hasFeedback
           >
             {getFieldDecorator('gateway_desc', {
               rules: [{
-                  required: true,message:"请输入主机名字"
+                  required: true,message:"请输入主机描述"
               }],
               initialValue: props["gateway_desc"],
             })(
@@ -125,9 +125,6 @@ class __AddLimitForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('http_status', {
-              rules: [{
-                required: true,message:"QPS限流阈值(单机)"
-              }],
               initialValue: props["http_status"],
             })(
               <InputNumber min={100} max={600} />
@@ -141,9 +138,6 @@ class __AddLimitForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('content_type', {
-              rules: [{
-                required: true,message:"请选择响应类型"
-              }],
               initialValue: props["content_type"] ? props["content_type"] : undefined,
             })(
               <Select placeholder="请选择响应类型" style={{ width: 200 }} allowClear onChange={this.handleChange}>
@@ -161,10 +155,7 @@ class __AddLimitForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('message', {
-              initialValue: props["message"],
-              rules: [{
-                required: true,message:"请输入响应类型"
-              }],
+              initialValue: props["message"]
             })(
               <TextArea rows={4} style={{ width: 300 }} />
             )}
@@ -238,16 +229,18 @@ export class ModifyAddHostQPS extends React.Component {
 
           // console.log("res", res)
           notification.open({
-            message: '修改成功',
-            description: res["msg"]
+            message: '新增主机成功',
+            description: "",
+            type: "success"
           });
 
           this.props.closeModel()
 
         }, err => {
           notification.open({
-            message: '修改失败',
-            description: err["msg"]
+            message: '新增主机失败',
+            description: err["msg"],
+            type: "error"
           });
         })
       }
@@ -258,7 +251,7 @@ export class ModifyAddHostQPS extends React.Component {
     return (
       <span>
         <Modal
-          title="新增主机设置"
+          title="新增主机"
           visible={true}
           okText="确认"
           cancelText="取消"
