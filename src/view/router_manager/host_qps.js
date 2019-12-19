@@ -29,9 +29,23 @@ class __SetLimitForm extends React.Component {
         className="ant-advanced-search-form"
         style={{ width: "100%" }}
       >
-        <Row style={{ marginBottom: 10 }}>所属网关：{props.gateway_desc}</Row>
-        <Row style={{ marginBottom: 10 }}>所属网关编码：{props.gateway_code}</Row>
+        <Row style={{ marginBottom: 10 }}>所属网关：{props.gateway_code}</Row>
         <Row style={{ marginBottom: 10 }}>主机域名：{props.host}</Row>
+        <Row style={{ marginBottom: 10 }}>
+          <Form.Item
+            label="主机描述："
+            hasFeedback
+          >
+            {getFieldDecorator('host_desc', {
+              rules: [{
+                  required: true,message:"请输入主机描述"
+              }],
+              initialValue: props["host_desc"],
+            })(
+              <Input style={{ width: 200 }} />
+            )}
+          </Form.Item>
+        </Row>
         <Row style={{ marginBottom: 10 }}>
           <Form.Item
             label="QPS限流阈值(单机)："
@@ -139,6 +153,8 @@ export class ModifyHostQPS extends React.Component {
         // console.log("values", values)
         hostQPSModel.setParam({
           id,
+          host:values["host"],
+          host_desc:values["host_desc"],
           content_type: values["content_type"],
           http_status: values["http_status"],
           limit_count: values["limit_count"],
