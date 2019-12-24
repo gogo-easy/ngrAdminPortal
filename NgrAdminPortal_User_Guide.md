@@ -4,7 +4,7 @@ NgrAdminPortal是ngr网关的管理portal，通过一个Portal页管理所有网
 
 ## 页面概览
 
-![Screen Shot 2019-12-16 at 11.25.11 PM](/Users/robin/Documents/Screen Shot 2019-12-16 at 11.25.11 PM.png)
+![Screen Shot 2019-12-16 at 11.25.11 PM](./images/Overview.png)
 
 上图为NgrAdminPortal的主页面
 
@@ -18,7 +18,7 @@ NgrAdminPortal是ngr网关的管理portal，通过一个Portal页管理所有网
 
 网关管理页面提供网关集群的增删改查，新增网关时可以配置网关集群中ngr实例的QPS。异常响应域还可以定义上游无响应时的返回内容。
 
-![](/Users/robin/Documents/Screen Shot 2019-12-16 at 11.41.47 PM.png)
+![](./images/Add_gateway.png)
 
 - 网关编码及网关名称：自定义的名称，用于标识网关集群。为了便于运维，一般取具有业务特性的名称。
 
@@ -31,7 +31,7 @@ NgrAdminPortal是ngr网关的管理portal，通过一个Portal页管理所有网
 
 主机管理页面提供网关集群的增删改查，新增主机时可以配置主机的域名及QPS。异常响应域还可以定义上游无响应时的返回内容。
 
-![Screen Shot 2019-12-16 at 11.58.37 PM](/Users/robin/Documents/Screen Shot 2019-12-16 at 11.58.37 PM.png)
+![Screen Shot 2019-12-16 at 11.58.37 PM](./images/Add_host.png)
 
 - 所属服务网关：指定主机所属的网关
 
@@ -51,7 +51,7 @@ NgrAdminPortal是ngr网关的管理portal，通过一个Portal页管理所有网
 
 #### 添加路由规则
 
-<img src="/Users/robin/Documents/Screen Shot 2019-12-17 at 9.10.33 PM.png" alt="Screen Shot 2019-12-17 at 9.10.33 PM" style="zoom:50%;" />
+<img src="./images/Add_router_rule.png" alt="Screen Shot 2019-12-17 at 9.10.33 PM" style="zoom:50%;" />
 
 - 路由规则名称：路由规则的标识性描述
 - 路由规则上下文：URL中的PATH部分，等效于nginx中的location
@@ -76,11 +76,11 @@ NgrAdminPortal是ngr网关的管理portal，通过一个Portal页管理所有网
 
 添加完路由后，可以设置路由规则的限流规则及上游target
 
-![Screen Shot 2019-12-18 at 9.44.27 PM](/Users/robin/Documents/Screen Shot 2019-12-18 at 9.44.27 PM.png)
+![Screen Shot 2019-12-18 at 9.44.27 PM](./images/target.png)
 
 ### AB分流
 
-<img src="/Users/robin/Documents/Screen Shot 2019-12-17 at 9.41.08 PM.png" alt="Screen Shot 2019-12-17 at 9.41.08 PM" style="zoom:50%;" />
+<img src="./images/Add_AB.png" alt="Screen Shot 2019-12-17 at 9.41.08 PM" style="zoom:50%;" />
 
 - AB分流名称：分流规则的标识性描述
 
@@ -96,4 +96,4 @@ NgrAdminPortal是ngr网关的管理portal，通过一个Portal页管理所有网
 
 插件管理模块用于控制插件的启停及插件的配置。
 
-![Screen Shot 2019-12-18 at 9.35.02 PM](/Users/robin/Documents/Screen Shot 2019-12-18 at 9.35.02 PM.png)
+![Screen Shot 2019-12-18 at 9.35.02 PM](./images/Plugins.png)
