@@ -7,7 +7,7 @@ import { eventBus } from './events';
 import { AddGatewayModel, GateWayListModel, SetLimitModel } from '../../../models/gateway_manage_models';
 
 const trim = val => val && val.trim() ? val.trim() : undefined;
-import { notification } from 'antd';
+import { notification,spin } from 'antd';
 
 const gateWayListModelInstance = GateWayListModel.getInstance();
 const setLimitModelInstance = SetLimitModel.getInstance();
@@ -18,7 +18,8 @@ class GateWay extends BaseView {
   constructor(props) {
     super(props);
     this.state = {
-      gateWayList: []
+      gateWayList: [],
+      spinflag:true
     }
 
     this.searchGateWayMessage = this.searchGateWayMessage.bind(this);
@@ -42,7 +43,9 @@ class GateWay extends BaseView {
 
   // 搜索值  成功失败回调函数
   searchGateWayMessage(values = {}) {
-
+    this.setState({
+      spinflag:true
+    })
     const { gateway_code } = values;
     gateWayListModelInstance.setParam({
       gateway_code
@@ -52,7 +55,8 @@ class GateWay extends BaseView {
         el.index = index + 1
       });
       this.setState({
-        gateWayList: res.data
+        gateWayList: res.data,
+        spinflag:false
       })
     }, err => {
       console.log(err);
@@ -111,7 +115,7 @@ class GateWay extends BaseView {
     return (
       <div>
         <SearchBar></SearchBar>
-        <GateWayList gateWayList={this.state.gateWayList}></GateWayList>
+        <GateWayList gateWayList={this.state.gateWayList} spinflag={this.state.spinflag}></GateWayList>
       </div>
     );
   }

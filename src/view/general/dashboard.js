@@ -7,7 +7,7 @@ import {
     DashboardListModel
 } from '../../models/general_models'
 
-import {Avatar, Button,Row,Col,Divider,Icon,Card,notification,Table} from 'antd'
+import {Avatar, Button,Row,Col,Divider,Icon,Card,notification,Table, Spin} from 'antd'
 
 const { Meta } = Card;
 
@@ -22,7 +22,7 @@ class Dashboard extends BaseView {
         this.state = {
             baseInfo:{},
             requestInfo:{},
-
+            baseInfoflag:true,
             pageStatus:'init'
         }
 
@@ -140,6 +140,9 @@ class Dashboard extends BaseView {
     fetchDashboardList(){
 
         const self = this;
+        this.setState({
+            baseInfoflag:true
+        })
         dashboardListModel.excute(res=>{
 
             const resData = res.data || {};
@@ -148,7 +151,8 @@ class Dashboard extends BaseView {
             self.setState({
                 baseInfo:data.baseInfo,
                 requestInfo:data.requestInfo,
-                pageStatus:'ready'
+                pageStatus:'ready',
+                baseInfoflag:false
             })
 
             const config = {
@@ -251,13 +255,15 @@ class Dashboard extends BaseView {
 
             <div className='base_content'>
                 <div className='content_title'>基础信息</div>
-                <Table
-                    columns={this.indata.baseInfoTableColumns} 
-                    dataSource={baseInfo}
-                    pagination={false}
-                    bordered
-                    className='dashboard_basetable'
-                />
+                <Spin spinning={this.state.baseInfoflag}>
+                    <Table
+                        columns={this.indata.baseInfoTableColumns} 
+                        dataSource={baseInfo}
+                        pagination={false}
+                        bordered
+                        className='dashboard_basetable'
+                    />
+                </Spin>
             </div>
 
         )
