@@ -1,22 +1,22 @@
 import Login from './view/login';
+import loadable from '../src/util/loadable'
+const Dashboard = loadable(()=>import('./view/general/dashboard'))
 
-import Dashboard from './view/general/dashboard';
+const UserListView = loadable(()=>import('./view/user_manager/user_list'))
+const OperationLog = loadable(()=>import('./view/user_manager/operation_log'))
 
-import UserListView from './view/user_manager/user_list';
-import OperationLog from './view/user_manager/operation_log';
+const PluginGeneral = loadable(()=>import('./view/plugin_manager/plugin_general'))
+const Firewall = loadable(()=>import('./view/plugin_manager/firewall'))
 
-import PluginGeneral from './view/plugin_manager/plugin_general';
-import Firewall from './view/plugin_manager/firewall';
-import FirewallIsolated from './view/plugin_manager/firewall_isolated';
-import PropertyRatelimit from './view/plugin_manager/property_ratelimit';
-import PropertyIsolated from './view/plugin_manager/property_isolated';
-import AntiAqlInjection from './view/plugin_manager/anti_sql_injection';
+const FirewallIsolated = loadable(()=>import('./view/plugin_manager/firewall_isolated'))
+const PropertyRatelimit = loadable(()=>import('./view/plugin_manager/property_ratelimit'))
+const PropertyIsolated = loadable(()=>import('./view/plugin_manager/property_isolated'))
+const AntiAqlInjection = loadable(()=>import('./view/plugin_manager/anti_sql_injection'))
 
-import HostManage from './view/router_manager/host_manage';
-import GatewayManage from './view/router_manager/gateway_manage';
-import RouteGroup from './view/router_manager/route_group';
-import GrayDivide from './view/router_manager/gray_divide';
-
+const HostManage = loadable(()=>import('./view/router_manager/host_manage'))
+const GatewayManage = loadable(()=>import('./view/router_manager/gateway_manage'))
+const RouteGroup = loadable(()=>import('./view/router_manager/route_group'))
+const GrayDivide = loadable(()=>import('./view/router_manager/gray_divide'))
 
 const basePath ='';
 

@@ -1,4 +1,4 @@
-import {Button, Table} from 'antd';
+import {Button, Table,Spin} from 'antd';
 import React, { Component } from 'react';
 
 import { SetLimit } from "./edit_gateway";
@@ -59,18 +59,18 @@ export class GateWayList extends Component {
       showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
 
     };
-
-
     return (
       <div style={{ marginTop: 20, padding:'20px' }} >
-        <AddGateway />
-        <Table
-          columns={genCol()}
-          className="log_list"
-          pagination={pagenationObj}
-          bordered
-          title={() => (<h2 style={{ textAlign: "center" }}>网关列表</h2>)}
-          dataSource={this.props.gateWayList} />
+        <Spin spinning={this.props.spinflag}>
+          <AddGateway />
+          <Table
+            columns={genCol()}
+            className="log_list"
+            pagination={pagenationObj}
+            bordered
+            title={() => (<h2 style={{ textAlign: "center" }}>网关列表</h2>)}
+            dataSource={this.props.gateWayList} />
+          </Spin>
       </div>
 
     )
