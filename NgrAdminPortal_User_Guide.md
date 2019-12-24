@@ -76,7 +76,7 @@ NgrAdminPortal是ngr网关的管理portal，通过一个Portal页管理所有网
 
 添加完路由后，可以设置路由规则的限流规则及上游target
 
-![Screen Shot 2019-12-18 at 9.44.27 PM](./images/target.png)
+![Screen Shot 2019-12-18 at 9.44.27 PM](./images/Target.png)
 
 ### AB分流
 
