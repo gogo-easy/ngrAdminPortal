@@ -12,6 +12,9 @@ const renderInput = (props) => (item, name, disabled = false) => {
     <Row style={{ marginBottom: 20 }}>
       <Form.Item label={name}>
         {getFieldDecorator(item, {
+          rules: [{
+            required: true,message:"网关编码必填且必须唯一"
+          }],
           initialValue: props[item],
         })(
           <Input disabled={disabled} />
@@ -46,10 +49,13 @@ class __SetLimitForm extends React.Component {
         {renderInput(props)("gateway_code", "网关编码：", true)}
         <Row style={{ marginBottom: 20 }}>
           <Form.Item
-            label="网关名称："
+            label="网关描述："
             hasFeedback
           >
             {getFieldDecorator('gateway_desc', {
+              rules: [{
+                required: true,message:"请输入网关描述"
+              }],
               initialValue: props["gateway_desc"],
             })(
               <Input style={{ width: 200 }} />
@@ -62,6 +68,9 @@ class __SetLimitForm extends React.Component {
             hasFeedback
           >
             {getFieldDecorator('limit_count', {
+              rules: [{
+                required: true,message:"请输入QPS限流阈值(单机)"
+              }],
               initialValue: props["limit_count"],
             })(
               <InputNumber min={0} style={{ width: 200 }} />
@@ -170,7 +179,7 @@ export class SetLimit extends React.Component {
         {
           this.state.visible ? <Modal
             maskClosable={false}
-            title="设置网关"
+            title="编辑网关信息"
             visible={this.state.visible}
             onOk={this.submit}
             onCancel={this.hide}
