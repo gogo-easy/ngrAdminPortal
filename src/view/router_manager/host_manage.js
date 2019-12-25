@@ -175,7 +175,7 @@ class HostManage extends BaseView {
     operationColumn(text, record, index) {
         return (
             <span>
-                <ModifyHostQPS {...record}></ModifyHostQPS>
+                <ModifyHostQPS cb={this.fetchAllList.bind(this)} {...record}></ModifyHostQPS>
                 <Divider type="vertical" />
                 <Popconfirm
                     title="你确更改状态吗?"
@@ -471,6 +471,7 @@ class HostManage extends BaseView {
         })
     }
     closeModelFn(){
+        this.fetchAllList()
         this.setState({
             ModifyAddHostQPSflag:false
         })

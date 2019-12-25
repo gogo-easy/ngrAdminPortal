@@ -170,7 +170,7 @@ export class ModifyHostQPS extends React.Component {
             description: '',
             type: "success"
           });
-
+          this.props.cb()
           setTimeout(() => {
             this.hide()
           }, 500);
