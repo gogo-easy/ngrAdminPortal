@@ -55,7 +55,7 @@ class BaseView extends Component {
             <div id="g_body" ref={(viewContainer) => { this.viewContainer = viewContainer }}>
                 <Layout>
                     {this.renderSider()}
-                    <Content style={{ paddingLeft: 200, minWidth: 1180 }}>
+                    <Content style={{ paddingLeft: 200}}>
                         <Nav></Nav>
                         {this.renderMain()}
                         <div style={{textAlign: "center",marginRight: '22px'}}>Copyright@2019 Go Go Easy Team</div>

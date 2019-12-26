@@ -60,7 +60,7 @@ class ModifyPassWord extends React.Component {
 const content = (
   <div>
     <ModifyPassWord />
-    <p><Button type="danger" onClick={logout} style={{ marginTop: 10 }}>退出</Button></p>
+    <Button type="danger" onClick={logout} style={{ marginTop: 10 }}>退出</Button>
   </div>
 );
 
