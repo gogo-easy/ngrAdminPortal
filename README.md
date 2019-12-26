@@ -4,7 +4,7 @@
 
 ## How to use
 
-- [User Guide](./NgrAdminPortal_User_Guide.md)
+- [User Guide](https://github.com/gogo-easy/ngrAdminPortal/wiki/Using-Guide)
 
 ## Deployment & Installation
 

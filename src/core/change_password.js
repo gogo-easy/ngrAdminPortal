@@ -46,7 +46,9 @@ class NormalLoginForm extends React.Component {
         passWordModifyModelInstance.excute(res => {
           notification.open({
             message: '修改成功',
-            description: res["msg"]
+            description: "",
+            type: "success"
+
           });
           setTimeout(() => {
             localStorage.clear();
@@ -55,8 +57,9 @@ class NormalLoginForm extends React.Component {
 
         }, err => {
           notification.open({
-            message: '创建失败',
-            description: err["msg"]
+            message: '修改失败',
+            description: err["msg"],
+            type: "error"
           });
         })
 

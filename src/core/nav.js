@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import { Popover, Button, Avatar, Modal } from 'antd';
 
 import { ModifyPassWordForm } from "./change_password";
+import {UserInfoStore} from "../store/business.store";
+
+const userInfo = UserInfoStore.getInstance().getData();
 
 
 const logout = () => {
@@ -74,8 +77,8 @@ export default class Nav extends Component {
       <div style={navStyle}>
         <Popover content={content} placement="bottomRight" title="操作" >
           <div style={avatarStyle}>
-            欢迎您！
-            <Avatar size="large" icon="user" />
+            欢迎您, {userInfo.userName}
+            <Avatar style={{ backgroundColor: '#87d068',left: 10 }} size="large" icon="user"></Avatar>
           </div>
 
         </Popover>
