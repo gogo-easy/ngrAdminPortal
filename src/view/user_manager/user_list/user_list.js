@@ -48,10 +48,9 @@ const genCol = (trigger) => [
   }, {
     title: '操作',
     key: 'action',
-    width: "100px",
     align: 'center',
     render: (text, record) => (
-      <div>
+      <div style={{width:'130px'}}>
         <Enable {...record}></Enable>
 
         <Divider type="vertical"></Divider>

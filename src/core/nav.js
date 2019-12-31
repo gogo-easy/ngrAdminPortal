@@ -41,7 +41,7 @@ class ModifyPassWord extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{display:"inline-block"}}>
         <Button type="primary" onClick={this.show}>
           修改密码
         </Button>
@@ -63,7 +63,7 @@ class ModifyPassWord extends React.Component {
 const content = (
   <div>
     <ModifyPassWord />
-    <Button type="danger" onClick={logout} style={{ marginTop: 10 }}>退出</Button>
+    <Button type="danger" onClick={logout} style={{ marginTop: 10,display:'inline-block',marginLeft:10 }}>退出</Button>
   </div>
 );
 
