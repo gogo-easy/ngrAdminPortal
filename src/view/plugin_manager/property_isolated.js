@@ -452,7 +452,7 @@ class PropretyRateLimit extends BaseView {
                     <Table
                         columns={tableColumns}
                         dataSource={listData}
-                        title={() => { return (<div style={{ textAlign: 'center', fontSize: '20px', color: "#000" }}>{title}</div>) }}
+                        title={() => { return (<h2 style={{ textAlign: "center" }}>{title}</h2>) }}
                         bordered
                         pagination={ false }
                         expandRowByClick={true}
