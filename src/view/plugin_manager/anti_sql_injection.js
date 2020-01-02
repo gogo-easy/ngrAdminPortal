@@ -1464,7 +1464,7 @@ class AntiSqlInjection extends BaseView {
                     <Table
                         columns={this.indata.tableColumns}
                         dataSource={this.state.listData}
-                        title={()=>{return (<div style={{textAlign:'center',fontSize:'20px',color:"#000"}}>SQL防控列表</div>)}}
+                        title={()=>{return (<h2 style={{ textAlign: "center" }}>SQL防控配置列表</h2>)}}
                         bordered
                         pagination={pagenationObj}
                         expandedRowRender={ this.addProportyDetails.bind(this) }

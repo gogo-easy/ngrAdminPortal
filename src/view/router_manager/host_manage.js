@@ -495,7 +495,7 @@ class HostManage extends BaseView {
                     <Table
                         columns={this.indata.tableColumns}
                         dataSource={this.state.listData}
-                        title={() => { return (<div style={{ textAlign: 'center', fontSize: '20px', color: "#000" }}>主机列表</div>) }}
+                        title={() => { return (<h2 style={{ textAlign: "center" }}>主机列表</h2>) }}
                         bordered
                         pagination={pagenationObj}
                     />

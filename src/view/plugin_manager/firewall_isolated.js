@@ -335,7 +335,6 @@ class IsoltedByFw extends BaseView {
                     key:key,
                     idx:idx + 1,
                     rowSpan:rowSpan,
-                    current_day:item.current_day || '',
                     current_second:item.current_second || '',
                     waf_id:item.waf_id || '',
                     current_day:item.current_day || '',
@@ -486,7 +485,7 @@ class IsoltedByFw extends BaseView {
                      <Table 
                         columns={tableColumns} 
                         dataSource={this.state.listData}
-                        title={()=>{return (<div style={{textAlign:'center',fontSize:'20px',color:"#000"}}>防火墙命中列表</div>)}}
+                        title={()=>{return (<h2 style={{ textAlign: "center" }}>防火墙命中列表</h2>)}}
                         bordered
                         pagination={true}
                         pageSize={10}

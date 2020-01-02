@@ -64,7 +64,7 @@ class BaseView extends Component {
                     <Content style={{ paddingLeft: !this.state.isMini?200:50}}>
                         <Nav></Nav>
                         {this.renderMain()}
-                        <div style={{textAlign: "center",marginRight: '22px'}}>Copyright@2019 Go Go Easy Team</div>
+                        <div style={{textAlign: "center",marginRight: '22px'}}>Copyright @ 2019-2020 GoGo Easy Team</div>
                     </Content>
                 </Layout>
             </div>
