@@ -106,6 +106,51 @@ export class EnableApiGroupModel extends BaseModel {
 }
 
 /*
+	增加服务组
+	added by robin
+*/
+export class AddUpStreamModel extends BaseModel {
+    constructor(props) {
+        super(props);
+        this.url= 'upstream/add';
+    }
+}
+
+/*
+	删除服务组
+	added by robin
+*/
+export class DeleteUpStreamModel extends BaseModel {
+    constructor(props) {
+        super(props);
+        this.url= 'upstream/delete';
+    }
+}
+
+/*
+	更改服务组
+	added by robin
+*/
+export class UpdateUpStreamModel extends BaseModel {
+    constructor(props) {
+        super(props);
+        this.url= 'upstream/update/';
+    }
+}
+
+/*
+	查询服务组列表
+	added by robin
+*/
+export class UpStreamListModel extends BaseModel {
+    constructor(props) {
+        super(props);
+        this.url= 'upstream/get/';
+        this.method = 'GET';
+    }
+}
+
+/*
 	查询路由组限速列表
 	
 */
@@ -121,6 +166,7 @@ export class ApiGroupRateLimitListModel extends BaseModel {
 	}
 
 }
+
 /*
 	新增路由规则组限速列表
 	

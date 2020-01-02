@@ -819,7 +819,7 @@ class RouteGroup extends BaseView {
             targetModalVisible: true,
             updateOrAddTarget: type,
             targetData: record,
-            targetModalTitle: type === 1 ? '编辑target' : '添加target'
+            targetModalTitle: type === 1 ? '编辑上游' : '添加上游'
         })
     }
     deleteTarget (id,group_id) {

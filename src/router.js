@@ -13,6 +13,9 @@ const PropertyRatelimit = loadable(()=>import('./view/plugin_manager/property_ra
 const PropertyIsolated = loadable(()=>import('./view/plugin_manager/property_isolated'))
 const AntiAqlInjection = loadable(()=>import('./view/plugin_manager/anti_sql_injection'))
 
+// srv_grp_manage: added by Robin
+const UpStream = loadable(()=>import('./view/router_manager/upstream_manage'));
+
 const HostManage = loadable(()=>import('./view/router_manager/host_manage'))
 const GatewayManage = loadable(()=>import('./view/router_manager/gateway_manage'))
 const RouteGroup = loadable(()=>import('./view/router_manager/route_group'))
@@ -84,6 +87,11 @@ const basePath ='';
 	{
 		path:basePath + '/router_manager/route_group',
 		page:RouteGroup
+	},
+	// srv_grp_manage: added by Robin
+	{
+		path:basePath + '/router_manager/upstream_manage',
+		page: UpStream
 	},
 	{
 		path:basePath + '/router_manager/gray_divide',

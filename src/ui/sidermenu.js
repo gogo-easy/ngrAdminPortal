@@ -45,6 +45,12 @@ class SideMenu extends Component {
 						name: '主机管理',
 						urlpath: '/router_manager/host_manage'
 					},
+					// srv_grp_manage: added by Robin
+					{
+						key: 'upstream_manage',
+						name: '上游管理',
+						urlpath: '/router_manager/upstream_manage'
+					},
 					{
 						key: 'route_group',
 						name: '路由规则管理',
