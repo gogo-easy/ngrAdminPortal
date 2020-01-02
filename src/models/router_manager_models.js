@@ -57,7 +57,7 @@ export class DelApiGroupModel extends BaseModel {
 
 }
 /*
-	新增路由组
+	新增路由规则组
 	
 */
 export class AddApiGroupModel extends BaseModel {
@@ -122,7 +122,7 @@ export class ApiGroupRateLimitListModel extends BaseModel {
 
 }
 /*
-	新增路由组限速列表
+	新增路由规则组限速列表
 	
 */
 export class AddGroupRateLimitModel extends BaseModel {
@@ -137,7 +137,7 @@ export class AddGroupRateLimitModel extends BaseModel {
 
 }
 /*
-	编辑路由组限速列表
+	编辑路由规则组限速列表
 	
 */
 export class EditGroupRateLimitModel extends BaseModel {

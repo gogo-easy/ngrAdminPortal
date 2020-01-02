@@ -229,7 +229,7 @@ class PluginGeneral extends BaseView {
             const enable = item.enable == '1'?true:false;
             const title = item.enable == '1'?"你确定要关闭插件吗？":"你确定要开启插件吗？";
     		return (
-    			<Col span={4} key={idx} order={item.order}>
+    			<Col key={idx} order={item.order}>
 		        	<Card 
 		        		title={<p className ='card_title'>{item.title}</p>} 
 		        		bordered={true}

@@ -1656,7 +1656,7 @@ class PropretyRateLimit extends BaseView {
                     <Table
                         columns={this.indata.tableColumns}
                         dataSource={this.state.listData}
-                        title={()=>{return (<div style={{textAlign:'center',fontSize:'20px',color:"#000"}}>特征限速防刷配置表</div>)}}
+                        title={()=>{return (<h2 style={{ textAlign: "center" }}>特征限速防刷配置列表</h2>)}}
                         bordered
                         pagination={pagenationObj}
                         expandedRowRender={ this.addProportyDetails.bind(this) }

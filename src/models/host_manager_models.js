@@ -19,6 +19,14 @@ export class HostQPSModel extends BaseModel {
     }
 }
 
+export class AddHostQPSModel extends BaseModel {
+    constructor(props) {
+        super(props);
+        this.url = 'host/add';
+        this.method = 'POST';
+    }
+}
+
 /*
     gateway 列表
  */

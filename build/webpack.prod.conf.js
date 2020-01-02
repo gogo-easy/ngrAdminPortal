@@ -47,6 +47,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new OptimizeCssAssetsPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.tpl.html',
+      favicon: './src/favicon.ico',
       minify: {
         removeComments: true, // 移除注释
         collapseWhitespace: true, // 去除空格

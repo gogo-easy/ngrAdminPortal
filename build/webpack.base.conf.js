@@ -1,4 +1,4 @@
-
+const darkTheme = require('@ant-design/dark-theme');
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('../config')
@@ -39,16 +39,19 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         exclude: /node_modules/
       },
-      {
-        test: /\.css$/,
-        use: [NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader'],
-      },{
-        test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+      { test: /\.less/, use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          { loader: "less-loader", options: { "modifyVars":darkTheme.default,javascriptEnabled: true}}
+        ]
       },
       // {
       //   test: preRegex,

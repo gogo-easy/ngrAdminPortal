@@ -93,7 +93,7 @@ class GrayDivide extends BaseView {
                 },
                 {
                     key:'group_id',
-                    label:'所属API组',
+                    label:'所属路由规则',
                     type:'select',
                     options:[
                         {
@@ -2030,7 +2030,7 @@ class GrayDivide extends BaseView {
                     <Table
                         columns={this.indata.tableColumns}
                         dataSource={this.state.listData}
-                        title={()=>{return (<div style={{textAlign:'center',fontSize:'20px',color:"#000"}}>AB分流管理</div>)}}
+                        title={()=>{return (<h2 style={{ textAlign: "center" }}>AB分流规则列表</h2>)}}
                         bordered={true}
                         pagination={pagenationObj}
                         expandedRowRender={this.renderConditionInfo.bind(this)}

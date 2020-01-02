@@ -1886,7 +1886,7 @@ class Firewall extends BaseView {
                      <Table 
                         columns={this.indata.tableColumns} 
                         dataSource={this.state.listData}
-                        title={()=>{return (<div style={{textAlign:'center',fontSize:'20px',color:"#000"}}>防火墙插件使用配置表</div>)}}
+                        title={()=>{return (<h2 style={{ textAlign: "center" }}>防火墙配置列表</h2>)}}
                         bordered={true}
                         pagination={pagenationObj}
                         expandedRowRender={this.renderConditionInfo.bind(this)}

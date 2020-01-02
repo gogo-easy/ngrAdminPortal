@@ -38,7 +38,7 @@ class NormalLoginForm extends Component {
 
 	    return (
 	      	<Form onSubmit={this.handleSubmit} className="login-form">
-	      		<div className='login_title'>NgRouter API网关管理系统</div>
+	      		<div className='login_title'>NgRouter API网关管理控制台</div>
 		        <FormItem>
 		          	{getFieldDecorator('userName', {
 		            	rules: [{ required: true, message: '请输入用户名' }],
@@ -65,7 +65,8 @@ class NormalLoginForm extends Component {
 		            	登录
 		          	</Button>
 		        </FormItem>
-	      	</Form>
+            <div style={{textAlign: "center",marginRight: '22px'}}>Copyright @ 2019-2020 GoGo Easy Team</div>
+          </Form>
 	    );
   	}
 }

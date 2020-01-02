@@ -33,7 +33,8 @@ module.exports = merge(baseWebpackConfig, {
     new WebpackServerQRcode(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.tpl.html'
+      template: './src/index.tpl.html',
+      favicon: './src/favicon.ico'
     }),
   ]
 })

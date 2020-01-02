@@ -8,7 +8,7 @@ import FieldsContent from '../../ui/ui.fiedld'
 
 import { formatObj, gotoPage } from '../../util/util'
 import { ModifyHostQPS } from "./host_qps"
-
+import { ModifyAddHostQPS } from "./addhost_qps"
 import {
     HostListModel,
     GatewayListModel,
@@ -32,12 +32,9 @@ class HostManage extends BaseView {
 
         this.state = {
             listData: [],
-
-
-
             searchData: {},
-
-
+            getewaylist:[],
+            ModifyAddHostQPSflag:false, // 新增主机弹框是否显示
             responseMessage: {                  // 返回错误信息详情
                 title: '',
                 content_type: '',
@@ -178,7 +175,7 @@ class HostManage extends BaseView {
     operationColumn(text, record, index) {
         return (
             <span>
-                <ModifyHostQPS {...record}></ModifyHostQPS>
+                <ModifyHostQPS cb={this.fetchAllList.bind(this)} {...record}></ModifyHostQPS>
                 <Divider type="vertical" />
                 <Popconfirm
                     title="你确更改状态吗?"
@@ -189,7 +186,7 @@ class HostManage extends BaseView {
                     <a href="javascript:;">启禁用</a>
                 </Popconfirm>
                 <Divider type="vertical" />
-                <a href="javascript:;" onClick={this.goApiGroup.bind(this, record)}>查看API组</a>
+                <a href="javascript:;" onClick={this.goApiGroup.bind(this, record)}>查看路由规则</a>
             </span>
         )
 
@@ -231,7 +228,7 @@ class HostManage extends BaseView {
         function toggleFalid() {
             const noticeConfig = {
                 description: '状态变更成功',
-                type: 'faild'
+                type: "error"
             }
 
             self.showNotification(noticeConfig);
@@ -289,13 +286,15 @@ class HostManage extends BaseView {
     fetchSearchParam() {
         let self = this;
         let searchFieldsArr = this.indata.searchFieldsArr;
-
         return new Promise((resolve, reject) => {
             gatewayListModel.excute((res) => {
-                const optionData = self.seachParFormatListData(res.data);
+                const optionData = self.seachParFormatListData(res.data)
                 searchFieldsArr[2].options = searchFieldsArr[2].options.concat(optionData.gateway_descs);
                 searchFieldsArr[3].options = searchFieldsArr[3].options.concat(optionData.gateway_codes);
                 self.setState({ searchFieldsArr: searchFieldsArr })
+                this.setState({
+                    getewaylist:res.data
+                })
                 resolve(res)
             }, (err) => {
                 reject(err)
@@ -466,7 +465,17 @@ class HostManage extends BaseView {
         )
 
     }
-
+    showModifyAddHostQPS(){
+        this.setState({
+            ModifyAddHostQPSflag:true
+        })
+    }
+    closeModelFn(){
+        this.fetchAllList()
+        this.setState({
+            ModifyAddHostQPSflag:false
+        })
+    }
     renderMain() {
         let pagenationObj = {
             pageSize: 50,
@@ -475,17 +484,18 @@ class HostManage extends BaseView {
                 return '总共：' + total + '条';
             }
         };
-
         return (
-
             <div style={{ padding: '20px' }}>
                 {this.renderSearchBar()}
+                <div className='btn_box'>
+                    <Button className="editable-add-btn" onClick={this.showModifyAddHostQPS.bind(this)} icon='plus' type='primary' className='right_btn'>新增主机</Button>
+                </div>
+                {this.state.ModifyAddHostQPSflag?<ModifyAddHostQPS closeModel={this.closeModelFn.bind(this)} getewaylist={this.state.getewaylist}></ModifyAddHostQPS>:""}
                 <Content>
-
                     <Table
                         columns={this.indata.tableColumns}
                         dataSource={this.state.listData}
-                        title={() => { return (<div style={{ textAlign: 'center', fontSize: '20px', color: "#000" }}>主机列表</div>) }}
+                        title={() => { return (<h2 style={{ textAlign: "center" }}>主机列表</h2>) }}
                         bordered
                         pagination={pagenationObj}
                     />
