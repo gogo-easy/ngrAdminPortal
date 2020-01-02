@@ -41,10 +41,12 @@ class BaseView extends Component {
     renderSider() {
 
         return (
-            <Sider class={this.state.isMini?'ismini':''} style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0, zIndex: 1 }}>
+            <div>
                 <div style={{textAlign: 'right',height: '40px',lineHeight: '40px',paddingRight: '20px'}} onClick={this.isminiFn.bind(this)}>{!this.state.isMini?<Icon type="left"></Icon>:<Icon type="right"></Icon>}</div>
-                <SideMenu routepath={this.props.location.pathname} pluginStatus={this.state.pluginStatus} />
-            </Sider>
+                <Sider class={this.state.isMini?'ismini':''} style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0, zIndex: 1 }}>
+                    <SideMenu routepath={this.props.location.pathname} pluginStatus={this.state.pluginStatus} />
+                </Sider>
+            </div>
         );
 
     }
@@ -61,7 +63,7 @@ class BaseView extends Component {
             <div id="g_body" ref={(viewContainer) => { this.viewContainer = viewContainer }}>
                 <Layout>
                     {this.renderSider()}
-                    <Content style={{ paddingLeft: !this.state.isMini?200:50}}>
+                    <Content style={{ paddingLeft: !this.state.isMini?200:0}}>
                         <Nav></Nav>
                         {this.renderMain()}
                         <div style={{textAlign: "center",marginRight: '22px'}}>Copyright @ 2019-2020 GoGo Easy Team</div>
