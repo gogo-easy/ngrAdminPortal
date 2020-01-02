@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Layout, Avatar } from 'antd'
+import { Layout, Avatar, Icon } from 'antd'
 
 // import 'antd/dist/antd.min.css'; 
 import '../common/less/private.less';
@@ -21,7 +21,8 @@ class BaseView extends Component {
         this.urlQuery = parseQuery(window.location.search);
 
         this.state = {
-            pluginStatus: {}
+            pluginStatus: {},
+            isMini:false
         }
     }
 
@@ -32,11 +33,16 @@ class BaseView extends Component {
         });
 
     }
-
+    isminiFn(){
+        this.setState({
+            isMini:!this.state.isMini
+        })
+    }
     renderSider() {
 
         return (
-            <Sider style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0, zIndex: 1 }}>
+            <Sider class={this.state.isMini?'ismini':''} style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0, zIndex: 1 }}>
+                <div style={{textAlign: 'right',height: '40px',lineHeight: '40px',paddingRight: '20px'}} onClick={this.isminiFn.bind(this)}>{!this.state.isMini?<Icon type="left"></Icon>:<Icon type="right"></Icon>}</div>
                 <SideMenu routepath={this.props.location.pathname} pluginStatus={this.state.pluginStatus} />
             </Sider>
         );
@@ -55,7 +61,7 @@ class BaseView extends Component {
             <div id="g_body" ref={(viewContainer) => { this.viewContainer = viewContainer }}>
                 <Layout>
                     {this.renderSider()}
-                    <Content style={{ paddingLeft: 200}}>
+                    <Content style={{ paddingLeft: !this.state.isMini?200:50}}>
                         <Nav></Nav>
                         {this.renderMain()}
                         <div style={{textAlign: "center",marginRight: '22px'}}>Copyright@2019 Go Go Easy Team</div>
