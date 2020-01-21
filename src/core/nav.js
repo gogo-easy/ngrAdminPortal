@@ -77,7 +77,7 @@ export default class Nav extends Component {
       <div style={navStyle}>
         <Popover content={content} placement="bottomRight" title="操作" >
           <div style={avatarStyle}>
-            欢迎您, {userInfo.userName}
+            欢迎您, {(userInfo && userInfo.userName) ? userInfo.userName : ""}
             <Avatar style={{ backgroundColor: '#87d068',left: 10 }} size="large" icon="user"></Avatar>
           </div>
 
