@@ -421,7 +421,16 @@ class RouteGroup extends BaseView {
                 },
                 {
                     title: '是否重写',
-                    dataIndex: 'enable_rewrite_txt',
+                    dataIndex: 'enable_rewrite',
+                    width:'100px',
+                    align:'center',
+                    render:(text,record,index)=>{
+                        return text==1?'是':'否'
+                    }
+                },
+                {
+                    title: '重写为',
+                    dataIndex: 'rewrite_to',
                     width:'100px',
                     align:'center'
                 },
@@ -1395,7 +1404,7 @@ class RouteGroup extends BaseView {
                 enable:item.enable == 1 ?'1':'0',
                 enable_txt:item.enable == '0'? '禁用':'启用',
                 enable_rewrite:item.enable_rewrite == 1 ?'1':'0',
-                rewrite_to:item.rewrite_to,
+                rewrite_to:item.enable_rewrite == 1 ?item.enable_rewrite:'',
                 lb_algo: item.lb_algo || '',
                 http_status:item.http_status || '',
                 content_type: item.content_type || '',
@@ -2250,6 +2259,7 @@ class RouteGroup extends BaseView {
                         dataSource={this.state.listData}
                         title={()=>{return (<h2 style={{ textAlign: "center" }}>路由规则列表</h2>)}}
                         bordered
+                        scroll={{x:true,y:true}}
                         pagination={pagenationObj}
                         expandedRowRender={this.renderGroupRateLimit.bind(this)}
                     />
