@@ -60,7 +60,7 @@ class NormalLoginForm extends Component {
 		          	})(
 		            	<Checkbox>记住我</Checkbox>
 		          	)}
-		          	<a className="login-form-forgot" href="javascript:;" style={{display:'none'}}>Forgot password</a>
+		          	{/* <a className="login-form-forgot" href="javascript:;" style={{display:'none'}}>Forgot password</a> */}
 		          	<Button type="primary" htmlType="submit" className="login-form-button">
 		            	登录
 		          	</Button>
