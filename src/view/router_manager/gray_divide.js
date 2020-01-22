@@ -818,9 +818,9 @@ class GrayDivide extends BaseView {
 
         //根据参数设置 所属主机的值
         let searchData = this.state.searchData;
-        const host_id = this.props.location.query.host_id;
-        const gateway_id = this.props.location.query.gateway_id;
-        const group_id = this.props.location.query.group_id;
+        const host_id = this.props.location.query?this.props.location.query.host_id:'';
+        const gateway_id = this.props.location.query?this.props.location.query.gateway_id:'';
+        const group_id = this.props.location.query?this.props.location.query.group_id:'';
         if (gateway_id && host_id && group_id) {
             searchData.gateway_id=parseInt(gateway_id);
 

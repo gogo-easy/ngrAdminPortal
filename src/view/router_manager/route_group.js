@@ -1404,7 +1404,7 @@ class RouteGroup extends BaseView {
                 enable:item.enable == 1 ?'1':'0',
                 enable_txt:item.enable == '0'? '禁用':'启用',
                 enable_rewrite:item.enable_rewrite == 1 ?'1':'0',
-                rewrite_to:item.enable_rewrite == 1 ?item.enable_rewrite:'',
+                rewrite_to:item.enable_rewrite == 1 ?item.rewrite_to:'',
                 lb_algo: item.lb_algo || '',
                 http_status:item.http_status || '',
                 content_type: item.content_type || '',
