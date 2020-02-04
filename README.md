@@ -4,11 +4,12 @@
 
 ## How to use
 
-- [User Guide](https://github.com/gogo-easy/ngrAdminPortal/wiki/Using-Guide)
+- Using Guide: [Document](https://github.com/gogo-easy/ngrAdminPortal/wiki/Using-Guide) | [码云文档](https://gitee.com/fijian/ngrAdminPortal/wikis/Using-Guide?sort_id=1840263)
 
 ## Deployment & Installation
 
-- [Deployment & Installation](https://github.com/gogo-easy/ngrAdminPortal/wiki/Quick-Start)
+- [GITHUB Document](https://github.com/gogo-easy/ngrAdminPortal/wiki/Quick-Start)
+- [码云文档](https://gitee.com/fijian/ngrAdminPortal/wikis/Quick-Start?sort_id=1840262)
 
 ## Release
 
