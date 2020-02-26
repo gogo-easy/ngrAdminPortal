@@ -17,11 +17,7 @@
 
 ## 贡献者
 
-- [@Fijian](https://github.com/jacobslei)
-- [@yearyeardiff](https://github.com/yearyeardiff)
-- [@wl4ever](https://github.com/wl4ever)
-- [@helicopter19](https://github.com/helicopter19)
-- [@xuwei-fe](https://github.com/xuwei-fe)
+- [@Spring Future](https://github.com/gogo-easy)
 
 ## License
 
