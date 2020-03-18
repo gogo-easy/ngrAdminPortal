@@ -19,6 +19,10 @@
 
 - [@Spring Future](https://github.com/gogo-easy)
 
+## 初始账户
+
+- admin/ngr_admin
+
 ## License
 
 The project is licensed by [Apache 2.0](https://github.com/gogo-easy/ngrAdminPortal/blob/master/LICENSE)
