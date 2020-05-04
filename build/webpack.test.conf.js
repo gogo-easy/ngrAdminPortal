@@ -8,15 +8,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const baseWebpackConfig = require('./webpack.base.conf.js')
 const config = require('../config')
-process.env.type = 'build'
+const webpack = require('webpack')
+process.env.type = 'test'
 const webpackConfig = merge(baseWebpackConfig, {
-  mode: config.build.mode,
-  devtool: config.build.sourceMap,
+  mode: config.test.mode,
+  devtool: config.test.sourceMap,
   output: {
-    path: config.build.assetsRoot,
-    filename: path.join(config.build.assetsSubDirectory, 'js/[name].[chunkhash:8].js'),
-    chunkFilename: path.join(config.build.assetsSubDirectory, 'js/[name].[chunkhash:8].chunk.js'),
-    publicPath: config.build.assetsPublicPath
+    path: config.test.assetsRoot,
+    filename: path.join(config.test.assetsSubDirectory, 'js/[name].[chunkhash:8].js'),
+    chunkFilename: path.join(config.test.assetsSubDirectory, 'js/[name].[chunkhash:8].chunk.js'),
+    publicPath: config.test.assetsPublicPath
   },
   optimization: {
     minimize: true,
@@ -32,6 +33,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     runtimeChunk: true
   },
   plugins: [
+    new webpack.DefinePlugin({
+        'process.env.type': JSON.stringify(process.env.type)
+    }),
     new CleanWebpackPlugin(['dist'], {
       root: path.join(__dirname, '../')
     }),
@@ -41,8 +45,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       ignore: ['.*']
     }]),
     new MiniCssExtractPlugin({
-      filename: path.join(config.build.assetsSubDirectory, 'css/[name].[contenthash:8].css'),
-      chunkFilename: path.join(config.build.assetsSubDirectory, 'css/[name].[contenthash:8].chunk.css'),
+      filename: path.join(config.test.assetsSubDirectory, 'css/[name].[contenthash:8].css'),
+      chunkFilename: path.join(config.test.assetsSubDirectory, 'css/[name].[contenthash:8].chunk.css'),
     }),
     new OptimizeCssAssetsPlugin(),
     new HtmlWebpackPlugin({
@@ -57,9 +61,10 @@ const webpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-if (config.build.bundleAnalyzerReport) {
+if (config.test.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
 module.exports = webpackConfig
+

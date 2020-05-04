@@ -5,6 +5,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.conf.js",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.conf.js --progress",
+    "test": "cross-env NODE_ENV=production webpack --config build/webpack.test.conf.js --progress",
     "analyz": "cross-env analyz=true npm run build",
     "express_start": "node ./bin/www",
     "pm2_start": "cross-env NODE_ENV=production pm2 start pm2.json"

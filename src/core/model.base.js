@@ -5,13 +5,11 @@ import Base64 from '../util/base64'
 import {getHttpAuth} from '../util/util'
 
 const config = require('../../config');
-
-const env = process.env.NODE_ENV == 'development'? 'dev':'build';
-
+const env = process.env.type;
+console.log(env)
 var sendReq = function(opt) {
     return $.ajax(opt);
 }
-
 class BaseModel {
     constructor(props) {
     

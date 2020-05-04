@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackServerQRcode = require('@ice-point/webpack-server-qrcode')
 const baseWebpackConfig = require('./webpack.base.conf.js')
 const config = require('../config')
-
+process.env.type = 'dev'
 module.exports = merge(baseWebpackConfig, {
   mode: config.dev.mode,
   devtool: config.dev.sourceMap,

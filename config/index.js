@@ -12,6 +12,15 @@ module.exports = {
     assetsPublicPath: '/',
     bundleAnalyzerReport: process.env.analyz
   },
+  test: {
+    restfulApi:'http://127.0.0.1:7777',
+    mode: NODE_ENV,
+    sourceMap: false,
+    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    bundleAnalyzerReport: process.env.analyz
+  },
   dev: {
     restfulApi:'http://127.0.0.1:7777',
     mode: NODE_ENV,
@@ -24,5 +33,5 @@ module.exports = {
     overlay: true,
     historyApiFallback: true,
     noInfo: true
-  },
+  }
 }
