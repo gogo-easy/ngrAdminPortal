@@ -32,6 +32,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     runtimeChunk: true
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.type': JSON.stringify(process.env.type)
+    }),
     new CleanWebpackPlugin(['dist'], {
       root: path.join(__dirname, '../')
     }),

@@ -6,7 +6,6 @@ import {getHttpAuth} from '../util/util'
 
 const config = require('../../config');
 const env = process.env.type;
-console.log(env)
 var sendReq = function(opt) {
     return $.ajax(opt);
 }

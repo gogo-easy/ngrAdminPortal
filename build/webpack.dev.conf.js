@@ -30,6 +30,9 @@ module.exports = merge(baseWebpackConfig, {
     noInfo: config.dev.noInfo
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.type': JSON.stringify(process.env.type)
+    }),
     new WebpackServerQRcode(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
